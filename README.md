@@ -30,3 +30,5 @@ See the formal announcement of Notify Hall on the Twilio Communications Blog [in
 <p>We leverage Facebook Webhooks to manage our interactions with the Facebook Messenger service. Follow the <a href="https://www.twilio.com/docs/api/notify/guides/messenger-notifications">Facebook Messenger quickstart</a>. Facebook Webhooks require another endpoint in which to send all Messenger events. To eliminate the hassle of standing up a server, I recommend using a managed serverless environment such as <a href="https://www.twilio.com/functions">Twilio Functions</a>. Our Function will be responsible for registering the User who scans our Messenger Code with our Twilio Notify Service.</p>
 
 <p>To setup a Twilio Function, first  <a href="https://www.twilio.com/console/runtime/functions/configure">configure your Twilio Runtime</a> with two of the environment variables you set up in the prerequisites section. This is shown in the figure below:</p>
+
+![GitHub Logo](/GitHub-Assets/twilio_functions_env_var.png)
