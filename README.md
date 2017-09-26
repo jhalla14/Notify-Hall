@@ -1,0 +1,2 @@
+# Notify-Hall
+Notify Hall represents a paradigm shift in communications by letting you take back control of your communications! Notify Hall is a user-first approach to communication which allows you to focus on sending notifications while empowering users to choose how they want to consume it. Built upon the extensive capabilities of Twilio’s Notify, Notify Hall is a reference deployment for you to run, extend and/or fork to enhance and embed specific functionality into your applications.
