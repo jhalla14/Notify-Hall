@@ -31,4 +31,136 @@ See the formal announcement of Notify Hall on the Twilio Communications Blog [in
 
 <p>To setup a Twilio Function, first  <a href="https://www.twilio.com/console/runtime/functions/configure">configure your Twilio Runtime</a> with two of the environment variables you set up in the prerequisites section. This is shown in the figure below:</p>
 
-![GitHub Logo](/GitHub-Assets/twilio_functions_env_var.png)
+![Twilio Function Environment Variables](/GitHub-Assets/twilio_functions_env_var.png)
+
+<p>To create a Function, navigate to your <a href="https://www.twilio.com/console/runtime/overview">Twilio Runtime</a>, click on Functions, select a new empty Function, and paste the following code into the Function. This Function is responsible for first verifying our webhook with Facebook. Note this is only needed for the initial verification from Facebook. After the initial request you may comment that portion out. After verifying this endpoint, this Function will receive all of the Facebook Webhooks which we will add next.
+</p>
+
+```javascript
+const got = require('got')
+const request = require('request');
+
+/* Create a Binding with our Notify Service */
+function createBinding(identity, address, segment, notifyService) {
+ 	notifyService.bindings.create({
+  		identity: identity,
+    	bindingType: "facebook-messenger",
+    	address: address,
+   		tag: [segment]
+	}).then((binding) => {
+		console.log("Binding created successfully", binding.sid)
+    }).catch((errorMessage) => {
+        console.log("Error creating fb binding", errorMessage)
+    })
+}
+
+
+/* Trick to embed two pieces of information to automatically group the User into a Segment */
+function replaceCharacter(original) {
+  const output = original.replace(":", "@")
+  return output
+}
+
+
+/* Echo any FB Messages sent to us back to the User */
+function sendMessage(event, accessToken, callback) {
+	let sender = event.sender.id;
+	let text = event.message.text;
+	
+    request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token: accessToken},
+    method: 'POST',
+    json: {
+      recipient: {id: sender},
+      message: {text: text}
+    }
+  }, function (error, response) {
+    if (error) {
+        console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+        console.log('Error: ', response.body.error);
+    }
+       callback(null, {
+        			status: 200,
+        			data: {
+          				message: 'Message Sent'
+        			}
+          	})
+  });
+}
+
+exports.handler = function(context, event, callback) {
+ 	const FB_ACCESS_TOKEN = context.FB_ACCESS_TOKEN
+	const client = context.getTwilioClient()
+	const notifyService = client.notify.v1.services(context.NOTIFY_SERVICE_SID)
+ 
+  //used initially for Facebook webhook validation to receive Messenger webhook events
+   /*
+  	if (event.hub_mode === 'subscribe' && event.hub_verify_token === FB_ACCESS_TOKEN) {
+      console.log("Validating Webhook")
+      callback(null, event.hub_challenge)
+    } else {
+     	console.error("Failed Validation. Make sure the validation tokens match")
+      	callback(null, 403)
+    }
+    */
+    
+
+  const page = event.object
+ /* check the FB webhook for when the User either sends in a message or scans a Messenger Code */ 
+if (page === 'page') {
+	const facebookEntry = event.entry
+    facebookEntry.forEach((entry) => {
+      entry.messaging.forEach((entryEvent) => {
+        if (entryEvent.message) {
+          sendMessage(entryEvent, FB_ACCESS_TOKEN, callback);
+       
+        } else if (entryEvent.postback) {
+          console.log("Postback", entryEvent.referral, entryEvent.sender.id);
+          
+          const parameters = entryEvent.referral.ref.split('+_')
+          const identity = replaceCharacter(parameters[0])
+          const segment = parameters[1]
+          const address = entryEvent.sender.id
+          createBinding(identity, address, segment, notifyService)
+          callback(null, {
+        			status: 200,
+        			data: {
+          				message: 'Facebook Binding created!'
+        			}
+          	})
+          
+        } else if (entryEvent.referral) {
+          console.log("Referral", entryEvent.referral, entryEvent.sender.id);
+          const parameters = entryEvent.referral.ref.split('+_')
+          const identity = replaceCharacter(parameters[0])
+          const segment = parameters[1]
+          const address = entryEvent.sender.id
+          createBinding(identity,address, segment, notifyService)
+          callback(null, {
+        			status: 200,
+        			data: {
+          				message: 'Facebook Binding created!'
+        			}
+          	})
+        } else {
+          console.log("Webhook received unknown event", entryEvent);
+          callback(null, {
+            status: 404,
+            data: {
+              message: "Webhook received unknown event"
+            }
+          })
+        }
+      });
+    })
+  }
+};
+```
+
+<p>To enable the use of Messenger Codes for our Facebook App you will need to enable the following Facebook webhooks:</p>
+
+![Facebook Webhooks](/GitHub-Assets/facebook_webhooks.png)
+
+You can find out more information about these webhooks on the [Facebook Developer portal](https://developers.facebook.com/docs/messenger-platform/webhook/#setup). Additionally, feel free to spice things up by adding a profile photo to your Facebook App. This will change the center image of your Messenger Code.
