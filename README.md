@@ -250,7 +250,51 @@ Navigate to your project’s directory and run node app.js. Then point your brow
 
 *Note: Your console may appear empty if this is your first time logging in. Users will populate once we complete User Setup in the next section.*
 
+![Admin Console](/GitHub-Assets/admin_console.png)
+```URL: localhost:3000/:se/console/:identity```
 
+Admin setup is now complete, but we don’t have anyone to send a notification to. Let’s get a User setup to receive these notifications.
 
+### User Setup
+Users may sign in with their Google hosted email address at ```localhost:3000/:se/``` and enter the same login process as we did for setting up the Admin. This time we will choose an email address (also Google hosted) with a domain that is not @example.com. If you have a browser with the Admin Console still open, I recommend logging into the User role using an entirely different browser.
+
+Once logged in, Users will be greeted with a screen shown in Figure 4. Users are able to update their contact information with additional phone numbers, set their preferred channel, and unsubscribe from lists. See the next section for learning how to add more channels.
+
+![User Profile](/GitHub-Assets/user_profile.png)
+```URL: localhost:3000/:se/profile/:identity```
+
+By default, all Users are subscribed to a Segment associated to the path they logged in with and into a Segment based on the day they first logged in. For example, if I signed up on August 24th, 2017 with the path ```localhost:3000/jhall/login``` (```/:se = jhall```) I would be in two segments: _jhall_ and _new-users-08-24-17-jhall_.
+
+#### Enter Phone Number and click update
+In the phone number section, enter a phone number to receive SMS messages and click Update. Reload the page.
+
+We now have a phone number in place and could begin sending SMS messages from the Admin to this User. But that’s not why we’re reading this blog post! At the heart of Notify Hall is the ability for the user to consume notifications on whatever channel(s) they prefer. To enable these capabilities we will first need to opt in the user for FB Messenger and push notifications.
+
+#### Enable FB Messenger Channel
+
+Enabling Facebook Messenger couldn’t be any simpler. While logged in as the User, open the Messenger App on your mobile device and scan the Messenger Code! 
+
+![Messenger Code](/GitHub-Assets/messenger_code_screenshot.png)
+
+Once you have properly configured the Facebook channel, refresh your User Profile page and you should see another channel appear in the Set Your Preferences section:
+
+![Adding Facebook Messenger Channel](/GitHub-Assets/adding_facebook_messenger_channel.png)
+
+Ready to send a notification? See the Send a Notification section. Otherwise, let’s also get our iOS app up and running.
+
+## iOS 
+The Notify Hall companion app allows users to register and receive Push Notifications. The companion app is purely for allowing and receiving push notifications. Note: The app doesn’t currently handle push notifications when running in the foreground. 
+
+### iOS Prerequisites
+* Apple Developer Account (Note: you will need a paid membership to send and receive push notifications)
+* Physical iOS device with 10.3 or later
+* APNS Certificates
+* Google Sign In 
+	* Go to Firebase Console, add your existing Google Cloud project to Firebase.
+	* Download the generated .plist file and add to your project.
+	* Be sure to add URL Scheme to your project: https://developers.google.com/identity/sign-in/ios/start-integrating
+
+#### Notify Device Registration
+We need an endpoint to register this device with the Notify Service. Again, we will leverage Twilio Functions. In Twilio Runtime, create a new Function, and paste the following:
 
 
