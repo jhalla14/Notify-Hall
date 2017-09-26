@@ -1,0 +1,442 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D58AEED667CEEE82D9527F18 /* Pods_notifyHall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C393D0526ED8C70FBF8CA3 /* Pods_notifyHall.framework */; };
+		DC47CF991F02A179005A34ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CF981F02A179005A34ED /* AppDelegate.swift */; };
+		DC47CF9E1F02A17A005A34ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC47CF9C1F02A17A005A34ED /* Main.storyboard */; };
+		DC47CFA01F02A17A005A34ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC47CF9F1F02A17A005A34ED /* Assets.xcassets */; };
+		DC47CFA31F02A17A005A34ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC47CFA11F02A17A005A34ED /* LaunchScreen.storyboard */; };
+		DC47CFAB1F02A624005A34ED /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CFAA1F02A624005A34ED /* NetworkRequest.swift */; };
+		DC47CFAD1F02AA9A005A34ED /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CFAC1F02AA9A005A34ED /* LoginViewController.swift */; };
+		DC47CFB51F02BA6F005A34ED /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CFB41F02BA6F005A34ED /* PreferencesViewController.swift */; };
+		DC47CFB71F02C00D005A34ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47CFB61F02C00D005A34ED /* Constants.swift */; };
+		DC760B3D1F030D5800474C7E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC760B3C1F030D5800474C7E /* User.swift */; };
+		DC760B401F03EC4B00474C7E /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC760B3F1F03EC4B00474C7E /* Binding.swift */; };
+		DCA5A66C1F164F2600297F73 /* KeychainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA5A66B1F164F2600297F73 /* KeychainAccess.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AECB60A230967E4D9CC85D69 /* Pods-notifyHall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notifyHall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-notifyHall/Pods-notifyHall.debug.xcconfig"; sourceTree = "<group>"; };
+		DC47CF951F02A179005A34ED /* notifyHall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = notifyHall.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC47CF981F02A179005A34ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DC47CF9D1F02A17A005A34ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DC47CF9F1F02A17A005A34ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DC47CFA21F02A17A005A34ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DC47CFA41F02A17A005A34ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC47CFAA1F02A624005A34ED /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		DC47CFAC1F02AA9A005A34ED /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DC47CFB41F02BA6F005A34ED /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesViewController.swift; path = ../PreferencesViewController.swift; sourceTree = "<group>"; };
+		DC47CFB61F02C00D005A34ED /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DC760B3C1F030D5800474C7E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DC760B3F1F03EC4B00474C7E /* Binding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		DCA5A66B1F164F2600297F73 /* KeychainAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainAccess.swift; sourceTree = "<group>"; };
+		DCEDD0671F5C9BD80052B24A /* notifyHall-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "notifyHall-Bridging-Header.h"; sourceTree = "<group>"; };
+		E2C393D0526ED8C70FBF8CA3 /* Pods_notifyHall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_notifyHall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAE17DDE5B85AF52AA65BDE8 /* Pods-notifyHall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notifyHall.release.xcconfig"; path = "Pods/Target Support Files/Pods-notifyHall/Pods-notifyHall.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DC47CF921F02A179005A34ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D58AEED667CEEE82D9527F18 /* Pods_notifyHall.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		68CE0351C99E2CDD37863138 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2C393D0526ED8C70FBF8CA3 /* Pods_notifyHall.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC47CF8C1F02A179005A34ED = {
+			isa = PBXGroup;
+			children = (
+				DC47CF971F02A179005A34ED /* notifyHall */,
+				DC47CF961F02A179005A34ED /* Products */,
+				EA92B21A5E8C542667F42730 /* Pods */,
+				68CE0351C99E2CDD37863138 /* Frameworks */,
+				DCEDD0671F5C9BD80052B24A /* notifyHall-Bridging-Header.h */,
+			);
+			sourceTree = "<group>";
+		};
+		DC47CF961F02A179005A34ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC47CF951F02A179005A34ED /* notifyHall.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC47CF971F02A179005A34ED /* notifyHall */ = {
+			isa = PBXGroup;
+			children = (
+				DC47CF981F02A179005A34ED /* AppDelegate.swift */,
+				DC47CF9C1F02A17A005A34ED /* Main.storyboard */,
+				DC760B3C1F030D5800474C7E /* User.swift */,
+				DC760B3F1F03EC4B00474C7E /* Binding.swift */,
+				DC47CFAC1F02AA9A005A34ED /* LoginViewController.swift */,
+				DC47CFB41F02BA6F005A34ED /* PreferencesViewController.swift */,
+				DC47CF9F1F02A17A005A34ED /* Assets.xcassets */,
+				DC47CFA11F02A17A005A34ED /* LaunchScreen.storyboard */,
+				DC47CFA41F02A17A005A34ED /* Info.plist */,
+				DC47CFB61F02C00D005A34ED /* Constants.swift */,
+				DC47CFAA1F02A624005A34ED /* NetworkRequest.swift */,
+				DCA5A66B1F164F2600297F73 /* KeychainAccess.swift */,
+			);
+			path = notifyHall;
+			sourceTree = "<group>";
+		};
+		EA92B21A5E8C542667F42730 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AECB60A230967E4D9CC85D69 /* Pods-notifyHall.debug.xcconfig */,
+				FAE17DDE5B85AF52AA65BDE8 /* Pods-notifyHall.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DC47CF941F02A179005A34ED /* notifyHall */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC47CFA71F02A17A005A34ED /* Build configuration list for PBXNativeTarget "notifyHall" */;
+			buildPhases = (
+				09AB0AAAD3121DD6ABD09A61 /* [CP] Check Pods Manifest.lock */,
+				DC47CF911F02A179005A34ED /* Sources */,
+				DC47CF921F02A179005A34ED /* Frameworks */,
+				DC47CF931F02A179005A34ED /* Resources */,
+				51DD822C7AA52FE716AF8EB1 /* [CP] Embed Pods Frameworks */,
+				0BCB91934748CBA182A1854F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = notifyHall;
+			productName = notifyHall;
+			productReference = DC47CF951F02A179005A34ED /* notifyHall.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DC47CF8D1F02A179005A34ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Joshua Hall";
+				TargetAttributes = {
+					DC47CF941F02A179005A34ED = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 44ZAWPW9FN;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = DC47CF901F02A179005A34ED /* Build configuration list for PBXProject "notifyHall" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DC47CF8C1F02A179005A34ED;
+			productRefGroup = DC47CF961F02A179005A34ED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC47CF941F02A179005A34ED /* notifyHall */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DC47CF931F02A179005A34ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC47CFA31F02A17A005A34ED /* LaunchScreen.storyboard in Resources */,
+				DC47CFA01F02A17A005A34ED /* Assets.xcassets in Resources */,
+				DC47CF9E1F02A17A005A34ED /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		09AB0AAAD3121DD6ABD09A61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0BCB91934748CBA182A1854F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-notifyHall/Pods-notifyHall-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51DD822C7AA52FE716AF8EB1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-notifyHall/Pods-notifyHall-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DC47CF911F02A179005A34ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC47CFB71F02C00D005A34ED /* Constants.swift in Sources */,
+				DC47CFB51F02BA6F005A34ED /* PreferencesViewController.swift in Sources */,
+				DC760B3D1F030D5800474C7E /* User.swift in Sources */,
+				DC760B401F03EC4B00474C7E /* Binding.swift in Sources */,
+				DC47CFAD1F02AA9A005A34ED /* LoginViewController.swift in Sources */,
+				DCA5A66C1F164F2600297F73 /* KeychainAccess.swift in Sources */,
+				DC47CFAB1F02A624005A34ED /* NetworkRequest.swift in Sources */,
+				DC47CF991F02A179005A34ED /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DC47CF9C1F02A17A005A34ED /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC47CF9D1F02A17A005A34ED /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DC47CFA11F02A17A005A34ED /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC47CFA21F02A17A005A34ED /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DC47CFA51F02A17A005A34ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TWILIO_ACCOUNT_SID = INSERT_YOUR_TWILIO_ACCOUNT_SID;
+				TWILIO_AUTH_TOKEN = INSERT_YOUR_TWILIO_AUTH_TOKEN;
+				TWILIO_NOTIFY_SERVICE_SID = INSERT_YOUR_NOTIFY_SERVICE_SID;
+			};
+			name = Debug;
+		};
+		DC47CFA61F02A17A005A34ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TWILIO_ACCOUNT_SID = INSERT_YOUR_TWILIO_ACCOUNT_SID;
+				TWILIO_AUTH_TOKEN = INSERT_YOUR_TWILIO_AUTH_TOKEN;
+				TWILIO_NOTIFY_SERVICE_SID = INSERT_YOUR_NOTIFY_SERVICE_SID;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DC47CFA81F02A17A005A34ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AECB60A230967E4D9CC85D69 /* Pods-notifyHall.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = notifyHall/notifyHall.entitlements;
+				DEVELOPMENT_TEAM = 44ZAWPW9FN;
+				INFOPLIST_FILE = notifyHall/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.notifyhall;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "notifyHall-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TWILIO_ACCOUNT_SID = INSERT_YOUR_TWILIO_ACCOUNT_SID;
+				TWILIO_AUTH_TOKEN = INSERT_YOUR_TWILIO_AUTH_TOKEN;
+				TWILIO_NOTIFY_SERVICE_SID = INSERT_YOUR_TWILIO_NOTIFY_SERVICE_SID;
+				TWILIO_RUNTIME_NOTIFY_REGISTRATION_ENDPOINT = INSERT_YOUR_TWILIO_RUNTIME_NOTIFY_REGISTRATION_ENDPOINT;
+			};
+			name = Debug;
+		};
+		DC47CFA91F02A17A005A34ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAE17DDE5B85AF52AA65BDE8 /* Pods-notifyHall.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = notifyHall/notifyHall.entitlements;
+				DEVELOPMENT_TEAM = 44ZAWPW9FN;
+				INFOPLIST_FILE = notifyHall/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.notifyhall;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "notifyHall-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TWILIO_ACCOUNT_SID = INSERT_YOUR_TWILIO_ACCOUNT_SID;
+				TWILIO_AUTH_TOKEN = INSERT_YOUR_TWILIO_AUTH_TOKEN;
+				TWILIO_NOTIFY_SERVICE_SID = INSERT_YOUR_TWILIO_NOTIFY_SERVICE_SID;
+				TWILIO_RUNTIME_NOTIFY_REGISTRATION_ENDPOINT = INSERT_YOUR_TWILIO_RUNTIME_NOTIFY_REGISTRATION_ENDPOINT;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DC47CF901F02A179005A34ED /* Build configuration list for PBXProject "notifyHall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC47CFA51F02A17A005A34ED /* Debug */,
+				DC47CFA61F02A17A005A34ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC47CFA71F02A17A005A34ED /* Build configuration list for PBXNativeTarget "notifyHall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC47CFA81F02A17A005A34ED /* Debug */,
+				DC47CFA91F02A17A005A34ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DC47CF8D1F02A179005A34ED /* Project object */;
+}
