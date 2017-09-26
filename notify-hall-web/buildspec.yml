@@ -1,0 +1,26 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - npm install express --save
+      - npm install hbs --save
+      - npm install body-parser --save
+      - npm install twilio@3.3.0-alpha-1 --save
+artifacts:
+  files:
+    - app.js
+    - package.json
+    - config.js
+    - views/home.hbs
+    - views/console.hbs
+    - views/login.hbs
+    - views/profile.hbs
+    - views/register.hbs
+    - views/preferences.hbs
+    - views/partials/head.hbs
+    - views/partials/navigation.hbs
+    - views/partials/footer.hbs
+    - public/images/btn_google_signin_dark_normal_web@2x.png
+    - public/images/favicon.ico
+    - util/helper.js
+    - node_modules/**/*

@@ -1,0 +1,101 @@
+{{> navigation}}
+<style>
+  #sectionHeader{
+    padding: 54px 0px 0px 0px
+  }
+</style>
+<div class="container fluid">
+  <h2 id="sectionHeader">Send a Notification</h2>
+  <form action="/{{salesEngineer}}/console/submit/{{identity}}" method="post">
+    <div class="form-group">
+        <label for="exampleSelect1">Step 1: Select the user group you would like to notify.</label>
+        <select class="form-control" id="exampleSelect1" name="segment">
+          {{#option segments}}
+            {{segment}}
+            {{segment}}
+          {{/option}}
+        </select>
+    </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Step 2: Craft your masterpiece.</label>
+        <input name="message" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="(e.g. Fuel the future of communications!!)">
+      </div>
+      <!-- div for grouping Send and Custom Notification button onto the same line -->
+      <div>
+        <button type="submit" class="btn btn-success">Send</button>
+  </form>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Customize Notification</button>
+    </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/{{salesEngineer}}/console/submit/custom/{{identity}}" method="post">
+            <div class="form-group">
+              <label for="exampleSelect1">Step 1: Select the user group you would like to notify.</label>
+              <select class="form-control" id="exampleSelect1" name="segment">
+                {{#option segments}}
+                  {{segment}}
+                  {{segment}}
+                {{/option}}
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="form-control-label">Message:</label>
+              <textarea class="form-control" id="message-text" name="message" placeholder='"To improve is to change, to perfect is to change often" - Frank Underwood' style="font-style:italic"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="form-control-label">SMS:</label>
+              <input class="form-control" id="message-text" name="modalSms"></input>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="form-control-label">iOS Title:</label>
+              <input class="form-control" id="message-text" name="modalIosTitle"></input>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="form-control-label">iOS Body:</label>
+              <input class="form-control" id="message-text" name="modalIosBody"></input>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="form-control-label">FB Messenger:</label>
+              <input class="form-control" id="message-text" name="modalFbMessenger"></input>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="form-control-label">Email:</label>
+              <input class="form-control" id="message-text" name="modalEmail" disabled="true" placeholder="Coming soon!" style="font-style:italic"></input>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="modalAll" value="all">
+                Alert all of the users devices
+              </label>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="modalPreferred" value="preferred">
+                Alert only the users preferred devices
+              </label>
+            </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Send message</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="container fluid">
+  <h2>Manage Users</h2>
+  <div>
+    {{# consoleManageUsersTable}}
+      <!-- {{user}} -->
+    {{/consoleManageUsersTable}}
+  </div>
+</div>

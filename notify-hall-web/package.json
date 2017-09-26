@@ -1,0 +1,28 @@
+{
+  "name": "notify-hall",
+  "version": "2.0.0",
+  "description": "Notify Hall represents a paradigm shift in communications by letting you take back control of your communications! Notify Hall is a user first approach to communication which allows you to focus on sending notifications while empowering users to choose how they want to consume it.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "INSERT_YOUR_REPO_URL_HERE"
+  },
+  "author": "Joshua Hall | Twilio Sales Engineer | AWS Certified Solution Architect",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "google-auth-library": "^0.10.0",
+    "google-libphonenumber": "^3.0.4",
+    "got": "^7.1.0",
+    "hbs": "^4.0.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
+    "twilio": "^3.3.0-alpha-1"
+  }
+}

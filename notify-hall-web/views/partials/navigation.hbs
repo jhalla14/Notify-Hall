@@ -1,0 +1,48 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="https://makeshift-toothpaste-6257.twil.io/assets/favicon.ico">
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="https://makeshift-toothpaste-6257.twil.io/assets/carousel.css" rel="stylesheet" type="text/css">
+
+  <!-- Bootstrap core JavaScript
+================================================== -->
+  <title>Notify Hall</title>
+</head>
+<body>
+  <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/{{salesEngineer}}">Notify Hall</a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+          </ul>
+          {{#if login}}
+              <a class="btn btn-outline-success my-2 my-sm-0" href="/{{salesEngineer}}/login">Login</a>
+          {{/if}}
+          {{#if logout}}
+              <a class="btn btn-outline-warning my-2 my-sm-0" href="/{{salesEngineer}}/logout">Logout</a>
+          {{/if}}
+        </div>
+  </nav>
+
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="./public/js/vendor/jquery.min.js"><\/script>')</script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      <script src="https://apis.google.com/js/api.js"></script>
+
+      <meta name="google-signin-client_id" content="INSERT_YOUR_GOOGLE_CLIENT_ID">
+      <meta name="google-signin-cookiepolicy" content="single_host_origin">
+      <meta name="google-signin-scope" content="profile email">
+</body>

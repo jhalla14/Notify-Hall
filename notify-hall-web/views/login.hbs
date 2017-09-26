@@ -1,0 +1,17 @@
+{{> navigation}}
+<style>
+  #login {
+    padding: 75px
+  }
+</style>
+<div class="container" id="login">
+  {{#if alert}}
+  <div class="alert alert-warning" role="alert">
+    <strong>{{alertMessage}}</strong> {{alertMessageDetail}}
+  </div>
+  {{/if}}
+  <a href="/auth/google?se={{salesEngineer}}">
+    <img src=".././images/btn_google_signin_dark_normal_web@2x.png">
+  </a>
+
+</div>

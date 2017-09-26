@@ -1,0 +1,79 @@
+{{> navigation}}
+<style>
+    #sectionHeader{
+      padding: 40px 0px 5px 0px;
+    }
+</style>
+<div class="container fluid">
+<div class="container fluid">
+  <h2 id="sectionHeader">Your contact information</h2>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <img src={{messengerCodeUrl}} style="width:300px;height:300px" align="middle">
+    </div>
+</div>
+  <div>
+  <form action="/{{salesEngineer}}/profile/{{email}}/update" method="post">
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="inputEmail3" placeholder={{email}} name="email" disabled>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Phone Number</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputPhoneNumber" placeholder="{{phoneNumber}}" name="phoneNumber">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>
+  </form>
+</div>
+<hr>
+<div class="container fluid">
+  <h2>Set your preferences</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Channel</th>
+        <th>Address</th>
+        <th>Tags</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#profileBindingRow bindings}}
+        {{binding}}
+      {{/profileBindingRow}}
+    </tbody>
+  </table>
+<div>
+    {{#profileOptionBinding bindings}}
+      {{binding}}
+    {{/profileOptionBinding}}
+</div>
+</div>
+<hr>
+  <div class="container fluid">
+    <h2>These are the lists you are subscribed to</h2>
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Segment</th>
+      <th>Unsubscribe</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#profileSegmentRow segments}}
+      {{segment}}
+    {{/profileSegmentRow}}
+  </tbody>
+</table>
+</div>
+</div>
+<script>
+  let phoneNumber = document.getElementById("inputPhoneNumber")
+  if (phoneNumber.placeholder == '') {
+    phoneNumber.placeholder = "Enter a US Phone Number"
+  }
+</script>
