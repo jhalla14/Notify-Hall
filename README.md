@@ -160,3 +160,97 @@ To enable the use of Messenger Codes for our Facebook App you will need to enabl
 ![Facebook Webhooks](/GitHub-Assets/facebook_webhooks.png)
 
 You can find out more information about these webhooks on the [Facebook Developer portal](https://developers.facebook.com/docs/messenger-platform/webhook/#setup). Additionally, feel free to spice things up by adding a profile photo to your Facebook App. This will change the center image of your Messenger Code.
+
+Once you’ve authorized your webhook endpoint with Facebook, be sure to complete [configuring your Notify service with Facebook](https://www.twilio.com/docs/api/notify/guides/messenger-notifications#create-a-facebook-messenger-configuration). 
+
+*Note: if you are using Messenger Codes, you will not have to create a webpage to authorize facebook users. We will be using Messenger Codes to get user consent.*
+
+#### Dependency Installation
+Install Node modules with the following:
+
+```
+// Twilio capailities
+npm install twilio@3.3.0-alpha-1 --save
+
+// Express Web Server, HBS Template Rendering & Passport Cookie Management
+npm install express --save
+npm install hbs --save
+npm install body-parser --save // used parse HTTP Requests
+npm install cookie-parser --save
+npm install express-session --save
+npm install passport --save
+npm install passport-google-oauth20 --save
+npm install got --save
+
+// Google Libraries for Google Sign In
+npm install google-auth-library --save
+npm install google-libphonenumber --save
+```
+
+#### Configure Environment Variables
+Update ```config.js``` with your environment variables. If you are missing any of the following variables below, refer to the prerequisites section.
+
+```
+module.exports = {
+  "TWILIO_ACCOUNT_SID": "YOUR_TWILIO_ACCOUNT_SID",
+  "TWILIO_AUTH_TOKEN": "YOUR_TWILIO_AUTH_TOKEN",
+  "TWILIO_NOTIFY_SERVICE_SID": "YOUR_NOTIFY_SERVICE_SID",
+  "MARKETING_PHONE_NUMBER": "INSERT_A_TWILIO_NUMBER_FROM_YOUR_ACCOUNT",
+  "SECRET": "INSERT_YOUR_PASSPORT_JS_SECRET",
+  "CLIENT_ID": "INSERT_YOUR_GOOGLE_CLIENT_ID",
+  "CLIENT_SECRET": "INSERT_YOUR_GOOGLE_CLIENT_SECRET",
+  "CALLBACK_URL": "http://localhost:3000/auth/google/callback/",
+  "FB_ACCESS_TOKEN": "INSERT_YOUR_FB_ACCESS_TOKEN",
+}
+```
+
+#### Change Google Client ID
+Change the Google Sign in Button to be associated with your Google Sign in project by replacing your client ID in ```navigation.hbs``` as shown below.
+
+```html
+<meta name="google-signin-client_id" content="INSERT_YOUR_GOOGLE_CLIENT_ID">
+```
+
+### Admin Setup
+In order to access the Admin Console, we need to differentiate between an Admin and an User. In this project, we will choose to differentiate based on the domain name for the Google hosted email. Therefore, in ```app.js``` we will set Admins to match the domain of @exmaple.com as shown in Figure 1. If you’re using a single or generic domain as an Admin, you may also match based on the email address itself rather than on the domain.
+
+```javascript
+/* Extract Profile Information from Google Sign In */
+function extractProfile (profile) {
+  
+  ...
+
+  profile.emails.forEach((email) => {
+    emailAddress = email.value
+    // set to match custom domain
+    if (email.value.match(/\.*@example.com$/)) {
+      admin = true
+    }
+  })
+
+  ...
+}
+```
+
+To complete Admin setup we also need to make a similar change in app.js.
+```javascript
+/* Generic Remove a Channel/ Binding with BindingSid */
+app.post('/:se/:identity/removeBinding/:bindingSid', (req, res) => {
+ ...
+  if (identity.match(/\.*@example.com$/)) {
+    responseUrl = `/${se}/console/${identity}`
+  }
+...
+})
+```
+Once the Admin is configured. All other emails/ domains will automatically default to the User role.
+
+### Run the project
+Navigate to your project’s directory and run node app.js. Then point your browser to ```localhost:3000/:se/``` and click Login and proceed to login with your Admin email. Once the Google authentication process is complete you will see the Console as shown below.
+
+*Note: Your console may appear empty if this is your first time logging in. Users will populate once we complete User Setup in the next section.*
+
+
+
+
+
