@@ -274,7 +274,7 @@ We now have a phone number in place and could begin sending SMS messages from th
 
 Enabling Facebook Messenger couldn’t be any simpler. While logged in as the User, open the Messenger App on your mobile device and scan the Messenger Code! 
 
-![Messenger Code](/GitHub-Assets/messenger_code_screenshot.png)
+![Messenger Code](/GitHub-Assets/messenger_code_screenshot.PNG)
 
 Once you have properly configured the Facebook channel, refresh your User Profile page and you should see another channel appear in the Set Your Preferences section:
 
@@ -292,9 +292,158 @@ The Notify Hall companion app allows users to register and receive Push Notifica
 * Google Sign In 
 	* Go to Firebase Console, add your existing Google Cloud project to Firebase.
 	* Download the generated .plist file and add to your project.
-	* Be sure to add URL Scheme to your project: https://developers.google.com/identity/sign-in/ios/start-integrating
+	* Be sure to add a URL Scheme to your project by following these [directions](https://developers.google.com/identity/sign-in/ios/start-integrating).
 
 #### Notify Device Registration
-We need an endpoint to register this device with the Notify Service. Again, we will leverage Twilio Functions. In Twilio Runtime, create a new Function, and paste the following:
+We need an endpoint to register this device with the Notify Service. Again, we will leverage Twilio Functions. In [Twilio Runtime](https://www.twilio.com/console/runtime/overview), create a new Function, and paste the following:
+
+```javascript
+xports.handler = function(context, event, callback) {
+	let client = context.getTwilioClient()
+    let notifyService = client.notify.v1.services(context.NOTIFY_SERVICE_SID)
+    
+    const identity = event.identity
+    const bindingType = event.bindingType
+    const address = event.address
+  
+  	console.log("Identity", identity)
+  	console.log("Binding Type", bindingType)
+  	console.log("Address", address)
+  
+  	var endpoint
+    if (event.endpoint != undefined) {
+      endpoint = event.endpoint
+      console.log("Endpoint", endpoint)
+      
+      notifyService.bindings.create({
+      endpoint: endpoint,
+      identity: identity,
+      bindingType: bindingType,
+      address: address
+    }).then((binding) => {
+      callback(null, {
+        status: 200,
+        data: {
+          message: 'Binding with endpoint created!'
+        }
+      })
+    }).catch((errorMessage) => {
+      console.log("Error creating binding with endpoint", errorMessage)
+      callback(null, {
+        status: 500,
+        data: {
+          error: errorMessage,
+          message: 'Failed to create binding. ' + errorMessage
+        }
+      })
+    })
+	
+    } else {
+      notifyService.bindings.create({
+      identity: identity,
+      bindingType: bindingType,
+      address: address
+    }).then((binding) => {
+      callback(null, {
+        status: 200,
+        data: {
+          message: 'Binding created!'
+        }
+      })
+    }).catch((errorMessage) => {
+      console.log("Error creating binding", errorMessage)
+      callback(null, {
+        status: 500,
+        data: {
+          error: errorMessage,
+          message: 'Failed to create binding. ' + errorMessage
+        }
+      })
+    })
+	
+    }  
+};
+```
+
+Make note of the URL path. You will need this later.
+
+#### Dependency Installation
+Setup CocoaPod dependencies from the project directory in a Terminal window:
+```pod install```
+Be sure to only open the ```.xcworkspace``` file.
+
+#### Configure Environment Variables
+All environment variables are stored in Info.plist and accessed via the Constants.swift file.
+
+In order to setup your environment variables select your project Target and navigate to Build Settings. Click the + button to create a new User-Defined Settings.
+
+![Xcode Create User Defined Settings](/GitHub-Assets/xcode_add_user_defined_setting.png)
+
+Create a User-Defined Setting for each of the following:
+* Twilio Account SID
+* Twilio Auth Token
+* Twilio Notify Service SID
+* Twilio Runtime Notify Registration Endpoint (the URL you copied from earlier)
+
+Once complete your User-Defined Settings should resemble the screenshot below.
+![Xcode Completed User-Defined Settings](/GitHub-Assets/xcode_user_defined_settings_complete.png)
+
+_Optional: you may configure debug and release variables for separating development and production environments. If you go this route you will also need to create an additional registration endpoint and another Notify Service. An example screenshot is below._
+![Xcode Seperating Debug & Release Environments](/GitHub-Assets/xcode_option_debug_release.png)
+
+#### Info.plist configuration
+Once you have your User-Defined Settings in place, you will need to access them via you Info.plist file. For the same User-Defined Settings you just created complete the following:
+![Xcode info.plist file](/GitHub-Assets/xcode_info_plist.png)
+
+#### Enable Push Notification Capabilities
+Enable Push Notification Entitlements in your Target > Capabilities > Push Notifications
+![Xcode Enabling Push Notifications](/GitHub-Assets/ios_enable_push_notifications.png)
+
+#### Run iOS App
+Connect and run the iOS app on a physical device. Once the app has launched, login with the same email address used for the User. Once logged in, allow notifications and tap Allow to register your iOS device with the Notify Service you have already configured.
+![Allow Push Notifications](/GitHub-Assets/ios_allow_notifications.PNG)
+
+User setup is now complete. Now let’s start sending some notifications!
+
+## Features
+Focusing on the experience of the user, Notify Hall is able to provide a unique set of capabilities to orchestrate messages over many channels. These features include:
+
+* Sending a Notification (Admin)
+* Changing Preferences (User)
+* Send a Custom Notification (Admin)
+
+### Send a Notification
+Admins are able to quickly send a notification on their Console by selecting a group of Users and crafting a custom message. Pressing Send will proceed to alert all of the available channels for all Users in that group.
+![Send a Notification](/GitHub-Assets/admin_send_notification.png)
+
+After sending you should receive a notification to all of your registered channels. Below shows an push notification.
+![Push Notification Example](/GitHub-Assets/notification_ios.jpg)
+
+### Changing Preferences
+Depending on the number of channels a User has registered with the service, they can set a preferred channel from the dropdown as shown in Figure 11. Notify Hall provides Users with complete control over their experience by allowing them to remove any existing channels and unsubscribe from they lists they have opted into.
+![Set your channel preference](/GitHub-Assets/set_preference.png)
+
+### Sending Custom Notification
+Notify also offers extensive capabilities to send specific content to multiple channels in a single API call. Therefore, Admins have options to alert all the devices of a user or just their preferred device while simultaneously customizing the content for that specific device. Admins are free to choose this option without having to worry about the specific end-user devices.
+![Enhanced Notifications](/GitHub-Assets/admin_custom_notification.png)
+
+Example of custom notifications being received.
+![SMS, iOS, and FB Messenger Notification](/GitHub-Assets/notification_all.jpg)
+
+## Supporting Documentation
+* [APNS Documentation](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)
+* [Messenger Code API](https://developers.facebook.com/docs/messenger-platform/discovery/messenger-codes/)
+* [FB/ Messenger Webhooks](https://developers.facebook.com/docs/graph-api/webhooks/)
+
+## Supplemental
+* [Twilio Functions Quickstart](https://www.twilio.com/docs/api/runtime/functions)
+
+
+# _We can’t wait to see what you build!_
+
+
+
+
+
 
 
